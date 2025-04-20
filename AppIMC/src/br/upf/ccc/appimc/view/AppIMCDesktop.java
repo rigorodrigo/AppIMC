@@ -212,8 +212,7 @@ public class AppIMCDesktop extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        // TODO add your handling code here:
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {
         
          int linha = jTable1.getSelectedRow();
         Pessoa selecionada = pessoas.get(linha);
@@ -222,12 +221,10 @@ public class AppIMCDesktop extends javax.swing.JFrame {
         txtCpf.setText(selecionada.getCpf());
         txtPeso.setText(selecionada.getPeso().toString());
         txtAltura.setText(selecionada.getAltura().toString());
-    }//GEN-LAST:event_jTable1MouseClicked
+    }
 
-    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {
 
-        // TODO add your handling code here:
-        
         int linha = jTable1.getSelectedRow();
         Pessoa selecionada = pessoas.get(linha);
        try {
@@ -285,7 +282,7 @@ public class AppIMCDesktop extends javax.swing.JFrame {
             matriz[linha][1] = p.getCpf();
             matriz[linha][2] = p.getPeso();
             matriz[linha][3] = p.getAltura();
-            matriz[linha][4] = p.calcularIMC();
+            matriz[linha][4] = Integer.valueOf((int) Math.round(p.calcularIMC()));
             matriz[linha][5] = p.interpretarIMC();
 
             linha++;
@@ -294,7 +291,7 @@ public class AppIMCDesktop extends javax.swing.JFrame {
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
                 matriz,
                 new String[]{
-                    "Nome", "CPF", "Peso", "Altura", "Cálculo", "Interpretação"
+                    "Nome", "CPF", "Peso", "Altura", "Cálculo IMC", "Interpretação IMC"
                 }
         ));
     }
